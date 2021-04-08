@@ -1,9 +1,6 @@
 * {
   margin: 0;
   padding: 0;
-  animation-name: curtain;
-  animation-duration: 2s;
-  text-decoration: none;
 }
 
 body {
@@ -12,27 +9,50 @@ body {
   font-size:28pt;
   text-align:center;
   width: 100%;
+  animation: curtain normal forwards;
+  animation-duration: 2s;
 }
+
+#watermark { z-index:-1; position: absolute; left: 0%; bottom: 0%; font-size: 200pt; opacity: 0.2;}
+
 
 a:link {
   color: YELLOW;
+  text-decoration: none;
+  animation-name: textColor;
+  animation-duration: 2s;
 }
 /* visited link */
 a:visited {
   color: DARKORANGE;
+  text-decoration: none;
+  animation-name: textColor;
+  animation-duration: 2s;
 }
 /* mouse over link */
 a:hover {
   color: ORANGE;
+  text-decoration: none;
+  animation-name: textColor;
+  animation-duration: 2s;
 }
 /* selected link */
 a:active {
   color: RED;
+  text-decoration: none;
+  animation-name: textColor;
+  animation-duration: 2s;
 }
 
 @keyframes curtain {
   0% {background-color: black; margin-top: 50%; color: BLACK}
   40% {background-color: black; color: BLACK}
-  100% {background-color: white; }
+  100% {background: url("wallpaper.gif"); background-size: cover; }
+}
+
+@keyframes textColor {
+  0% {color: black;}
+  40% {color: black;}
+  100% {}
 }
 
