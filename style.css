@@ -1,3 +1,15 @@
+@font-face {
+  font-family: Roboto Slab;
+  src: url('font/RobotoSlab-Medium.ttf');
+  src: url('font/RobotoSlab-Thin.ttf');
+  src: url('font/RobotoSlab-Bold.ttf');
+  src: url('font/RobotoSlab-Black.ttf');
+  src: url('font/RobotoSlab-Light.ttf');
+  src: url('font/RobotoSlab-SemiBold.ttf');
+  src: url('font/RobotoSlab-ExtraBold.ttf');
+  src: url('font/RobotoSlab-ExtraLight.ttf');
+  src: url('font/RobotoSlab-Regular.ttf');
+}
 * {
   margin: 0;
   padding: 0;
@@ -55,6 +67,7 @@ a:hover {
 a:active {
   color: orange;
 }
+
 
 @keyframes curtain {
   0% {background-color: black; margin-top: 50%; color: BLACK}

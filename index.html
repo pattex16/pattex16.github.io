@@ -3,14 +3,12 @@
     <title>Pagina iniziale</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
   </head>
   <script src="libraries/p5.js"></script>
   <script src="libraries/p5.dom.js"></script>
   <script src="libraries/p5.sound.js"></script>
   <script src="libraries/jquery-3.6.0.js"></script>
   <script src="background.js"></script>
-  <script src="zoombuttons.js"></script>
   <body>
     <div id="list">
       <h2>Progetti html:</h2></br>
@@ -24,17 +22,5 @@
     </div>
     <div id="watermark">pattex16</div>
   </body>
-  <script>
-    $("#magnify").click(function(){
-      $("div").animate({
-        fontSize: '+=3pt',
-      });
-    });
-
-$("#minimize").click(function(){
-  $("div").animate({
-    fontSize: '-=3pt',
-  });
-});
-  </script>
+    <script src="zoombuttons.js"></script>
 </html>
