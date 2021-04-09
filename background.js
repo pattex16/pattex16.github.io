@@ -22,15 +22,15 @@ function draw(){
   b2 = color(255);
   setGradient(0, 0, width, height, b2, b1, Y_AXIS);
 
-  if (frameCount % 30 == 0){
-    if (l.length > 10)
-      l.splice(0,1);
-    l.push(new Ball(1))
-  }
+  // if (frameCount % 30 == 0){
+  //   if (l.length > 10)
+  //     l.splice(0,1);
+  //   l.push(new Ball(1))
+  // }
 
-  for (i of l){
-    i.update();
-  }
+  // for (i of l){
+  //   i.update();
+  // }
 
 }
 function windowResized(){

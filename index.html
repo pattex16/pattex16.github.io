@@ -8,13 +8,33 @@
   <script src="libraries/p5.js"></script>
   <script src="libraries/p5.dom.js"></script>
   <script src="libraries/p5.sound.js"></script>
+  <script src="libraries/jquery-3.6.0.js"></script>
   <script src="background.js"></script>
+  <script src="zoombuttons.js"></script>
   <body>
     <div id="list">
-      <h1>Progetti html:</h1></br>
+      <h2>Progetti html:</h2></br>
+
+      <button id="magnify">+</button>
+      <button id="minimize">-</button>
+      </br>
       <a href="calculator/calculator.html">calcolatrice</a> </br>
       <a href="geometry/index.html">geometry</a> </br>
+      <a href="testing/index.html">testing</a> </br>
     </div>
     <div id="watermark">pattex16</div>
   </body>
+  <script>
+    $("#magnify").click(function(){
+      $("div").animate({
+        fontSize: '+=3pt',
+      });
+    });
+
+$("#minimize").click(function(){
+  $("div").animate({
+    fontSize: '-=3pt',
+  });
+});
+  </script>
 </html>

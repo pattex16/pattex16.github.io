@@ -32,28 +32,28 @@ a {
   animation-duration: 2s;
 }
 a:link {
-  color: YELLOW;
+  color: grey;
   text-decoration: none;
   animation-name: textColor;
   animation-duration: 2s;
 }
 /* visited link */
 a:visited {
-  color: DARKORANGE;
+  color: darkgrey;
   text-decoration: none;
   animation-name: textColor;
   animation-duration: 2s;
 }
 /* mouse over link */
 a:hover {
-  color: ORANGE;
+  color: teal;
   text-decoration: none;
   animation-name: textColor;
   animation-duration: 2s;
 }
 /* selected link */
 a:active {
-  color: RED;
+  color: orange;
 }
 
 @keyframes curtain {
@@ -72,4 +72,17 @@ a:active {
   0% {opacity: 0;}
   40% {opacity: 0;}
   100% {opacity: 1;}
+}
+
+button{
+  width : 50px;
+  height : 50;
+  color : white;
+  font-weight: 900;
+  background-color: black;
+  opacity: 0.2;
+  border: none;
+
+  animation: curtain normal forwards;
+  animation-duration: 2s;
 }
