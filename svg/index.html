@@ -1,7 +1,8 @@
 <html>
   <body>
-    <svg width="500" height="100">
-      <circle id="circle1" cx="20" cy="20" r="10" style="stroke: none; fill: #ff0000;"/>
+  <object data="drawing.svg" type="image/svg+xml" style="position: absolute; top: 0 ; left: 0"></object>
+    <svg width="500" height="150">
+      <circle id="circle1" cx="20" cy="50" r="10" style="stroke: none; fill: #ff0000; position: absolute; left: 0 ; left: 0"/>
     </svg>
 
     <script>
@@ -28,6 +29,7 @@ function animate() {
     newX = 20;
   }
   circle.setAttribute("cx", newX);
+  circle.setAttribute("r", newX/10 + 10);
 }
     </script>
     <br/>

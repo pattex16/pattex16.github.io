@@ -9,3 +9,7 @@ $("#minimize").click(function(){
     fontSize: '-=3pt',
   });
 });
+
+$("#p1").ready(function() {
+	$(this).css({"font-size" : "-=3pt"});	
+})
