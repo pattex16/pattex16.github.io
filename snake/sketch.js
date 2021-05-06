@@ -143,33 +143,33 @@ class Finger{
     this.x = mouseX;
     this.y = mouseY;
   }
-  update(){
-    if (mouseX > this.x)
+  update(threshold){
+    if (mouseX + threshold
+      > this.x)
       if (this.p.d != Direction.West){
         p.d = Direction.East;
         this.refresh();
         return;
       }
-    if (mouseX < this.x)
+    if (mouseX + threshold < this.x)
       if (this.p.d != Direction.East){
         p.d = Direction.West;
         this.refresh();
         return;
       }
-    if (mouseY < this.y)
+    if (mouseY + threshold < this.y)
       if (this.p.d != Direction.South){
         p.d = Direction.North;
         this.refresh();
         return;
       }
 
-    if (mouseY > this.y)
+    if (mouseY + threshold > this.y)
       if (this.p.d != Direction.North){
         p.d = Direction.South;
         this.refresh();
         return;
       }
-    
   }
 }
 
@@ -192,8 +192,6 @@ function draw() {
   g.draw();
   p.show();
   a.show();
-}
-
-function mouseDragged(){
-  f.update();
+  if(mouseIsPressed)
+    f.update(10);
 }
