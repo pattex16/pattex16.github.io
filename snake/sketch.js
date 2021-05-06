@@ -100,11 +100,13 @@ class Player{
       this.dots.push(new Dot(this.g,this.x,this.y));
       document.getElementById("points").innerText=this.dots.length-3;
       a.randomize();
+      if (this.dots.length >= maxScore)
+        maxScore = this.dots.length;
     }
 
     for (let i = 1; i < this.dots.length-2; i++){
       if (this.x == this.dots[i].x && this.y == this.dots[i].y){
-        alert("GAME OVER, score: " + this.dots.length-3 + " press OK to play again!");
+        alert("GAME OVER, score: " + this.dots.length + ", max score: " + maxScore + " press OK to play again!");
         setup();
       }
     }
@@ -168,6 +170,7 @@ var p;
 var f;
 var img;
 var ats;
+var maxScore = 0;
 
 function preload(){
   img = loadImage("./arrows.png");
