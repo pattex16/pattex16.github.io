@@ -133,8 +133,29 @@ class Apple{
   }
 }
 
+class Finger{
+  constructor(p){
+    this.x = width/2;
+    this.y = height/2;
+    this.p = p;
+  }
+  update(){
+    if (mouseX > this.x)
+      p.d = Direction.East;
+    if (mouseX < this.x)
+      p.d = Direction.West;
+    if (mouseY > this.y)
+      p.d = Direction.North;
+    if (mouseY < this.y)
+      p.d = Direction.South;
+    this.x = mouseX;
+    this.y = mouseY;
+  }
+}
+
 var g;
 var p;
+var f;
 var ats;
 
 function setup() {
@@ -142,7 +163,8 @@ function setup() {
   g = new Grid(16,16);
   a = new Apple(g);
   p = new Player(g,a,8,8);
-  frameRate(10);
+  f = new Finger(p);
+  frameRate(8);
 }
 
 function draw() {
@@ -150,4 +172,8 @@ function draw() {
   g.draw();
   p.show();
   a.show();
+}
+
+function touchMoved(){
+  f.update();
 }
