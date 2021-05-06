@@ -141,13 +141,17 @@ class Finger{
   }
   update(){
     if (mouseX > this.x)
-      p.d = Direction.East;
+      if (this.p.d != Direction.West)
+        p.d = Direction.East;
     if (mouseX < this.x)
-      p.d = Direction.West;
+      if (this.p.d != Direction.East)
+        p.d = Direction.West;
     if (mouseY > this.y)
-      p.d = Direction.North;
+      if (this.p.d != Direction.South)
+        p.d = Direction.North;
     if (mouseY < this.y)
-      p.d = Direction.South;
+      if (this.p.d != Direction.North)
+        p.d = Direction.South;
     this.x = mouseX;
     this.y = mouseY;
   }
