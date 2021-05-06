@@ -11,6 +11,7 @@ class Grid{
     this.h = h;
   }
   draw(){
+    stroke(0);
     for (let i = 0; i < this.w; i++)
       line(width / this.w * i, 0, width / this.w * i, height);
 
@@ -135,48 +136,42 @@ class Apple{
 
 class Finger{
   constructor(p){
-    this.x = width/2;
-    this.y = height/2;
     this.p = p;
   }
   refresh(){
-    this.x = mouseX;
-    this.y = mouseY;
+    this.x = mouseX-width/2;
+    this.y = -mouseY+height/2;
   }
-  update(threshold){
-    if (mouseX + threshold
-      > this.x)
-      if (this.p.d != Direction.West){
-        p.d = Direction.East;
-        this.refresh();
-        return;
-      }
-    if (mouseX + threshold < this.x)
-      if (this.p.d != Direction.East){
-        p.d = Direction.West;
-        this.refresh();
-        return;
-      }
-    if (mouseY + threshold < this.y)
-      if (this.p.d != Direction.South){
-        p.d = Direction.North;
-        this.refresh();
-        return;
-      }
-
-    if (mouseY + threshold > this.y)
-      if (this.p.d != Direction.North){
-        p.d = Direction.South;
-        this.refresh();
-        return;
-      }
+  update(){
+    this.refresh();
+    if (this.y>this.x && this.y>-this.x){
+      if (this.p.d != Direction.South)
+        this.p.d = Direction.North;
+    }
+    if (!(this.y>this.x) && this.y>-this.x){
+      if (this.p.d != Direction.West)
+        this.p.d = Direction.East;
+    }
+    if (!(this.y>this.x) && !(this.y>-this.x)){
+      if (this.p.d != Direction.North)
+        this.p.d = Direction.South;
+    }
+    if (this.y>this.x && !(this.y>-this.x)){
+      if (this.p.d != Direction.East)
+        this.p.d = Direction.West;
+    }
   }
 }
 
 var g;
 var p;
 var f;
+var img;
 var ats;
+
+function preload(){
+  img = loadImage("./arrows.png");
+}
 
 function setup() {
   createCanvas(512, 512);
@@ -184,14 +179,23 @@ function setup() {
   a = new Apple(g);
   p = new Player(g,a,8,8);
   f = new Finger(p);
-  frameRate(8);
 }
 
 function draw() {
-  background("#8ab4f8");
-  g.draw();
-  p.show();
-  a.show();
+  if (frameCount % 8 == 0){
+    background("#8ab4f8");
+    g.draw();
+    p.show();
+    a.show();
+    stroke(2*16+1,36);
+    line(0,0,width,height);
+    line(width,0,0,height);
+    
+    if (frameCount < 2.5*60){
+      tint(255,2550*4/(frameCount));
+      image(img,0,0);
+    }
+  }
   if(mouseIsPressed)
-    f.update(10);
+    f.update();
 }
