@@ -101,7 +101,7 @@ class Player{
       a.randomize();
     }
 
-    for (let i = 0; i < this.dots.length-2; i++){
+    for (let i = 1; i < this.dots.length-2; i++){
       if (this.x == this.dots[i].x && this.y == this.dots[i].y){
         alert("GAME OVER, score: " + this.dots.length-3 + " press OK to play again!");
         setup();
@@ -139,21 +139,37 @@ class Finger{
     this.y = height/2;
     this.p = p;
   }
-  update(){
-    if (mouseX > this.x)
-      if (this.p.d != Direction.West)
-        p.d = Direction.East;
-    if (mouseX < this.x)
-      if (this.p.d != Direction.East)
-        p.d = Direction.West;
-    if (mouseY > this.y)
-      if (this.p.d != Direction.South)
-        p.d = Direction.North;
-    if (mouseY < this.y)
-      if (this.p.d != Direction.North)
-        p.d = Direction.South;
+  refresh(){
     this.x = mouseX;
     this.y = mouseY;
+  }
+  update(){
+    if (mouseX > this.x)
+      if (this.p.d != Direction.West){
+        p.d = Direction.East;
+        this.refresh();
+        return;
+      }
+    if (mouseX < this.x)
+      if (this.p.d != Direction.East){
+        p.d = Direction.West;
+        this.refresh();
+        return;
+      }
+    if (mouseY < this.y)
+      if (this.p.d != Direction.South){
+        p.d = Direction.North;
+        this.refresh();
+        return;
+      }
+
+    if (mouseY > this.y)
+      if (this.p.d != Direction.North){
+        p.d = Direction.South;
+        this.refresh();
+        return;
+      }
+    
   }
 }
 
@@ -178,6 +194,6 @@ function draw() {
   a.show();
 }
 
-function touchMoved(){
+function mouseDragged(){
   f.update();
 }
