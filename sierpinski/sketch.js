@@ -25,40 +25,23 @@ class Triangle{
     var a;
     var b;
 
-    if (r == 1 || r == 2){
-      this.drawDot();
-      a = createVector(this.x, this.y);
-      b = createVector(this.x1,this.y1);
+    this.drawDot();
 
-      v = b.sub(a);
-
-      this.x += v.mult(m).x;
-      this.y += v.mult(m).y;
+    if (r == 0 || r == 1){
+      this.x = getPos([this.x,this.y],[this.x1,this.y1])[0];
+      this.y = getPos([this.x,this.y],[this.x1,this.y1])[1];
     }
 
-    if (r == 3 || r == 4){
-      this.drawDot();
-      a = createVector(this.x, this.y);
-      b = createVector(this.x2,this.y2);
-
-      v = b.sub(a);
-      this.x += v.mult(m).x;
-      this.y += v.mult(m).y;
+    else if (r == 2 || r == 3){
+      this.x = getPos([this.x,this.y],[this.x2,this.y2])[0];
+      this.y = getPos([this.x,this.y],[this.x2,this.y2])[1];
     }
 
-    if (r == 5 || r == 6){
-      this.drawDot();
-      a = createVector(this.x, this.y);
-      b = createVector(this.x3,this.y3);
-
-      v = b.sub(a);
-      this.x += v.mult(m).x;
-      this.y += v.mult(m).y;
+    else{
+      this.x = getPos([this.x,this.y],[this.x3,this.y3])[0];
+      this.y = getPos([this.x,this.y],[this.x3,this.y3])[1];
     }
 
-    ellipse(this.x1,this.y1,10,10);
-    ellipse(this.x2,this.y2,10,10);
-    ellipse(this.x3,this.y3,10,10);
 
     image(redDice[0],this.x1,this.y1,25,25);
     image(redDice[1],this.x1 + 30,this.y1,25,25);
@@ -85,20 +68,28 @@ function preload(){
     redDice.push(loadImage("red/red" + i + ".png"));
 }
 
+function getPos (start, end){
+  var dx = end[0] - start[0];
+  var dy = end[1] - start[1];
+  return [start[0] + 0.5 * dx, start[1] + 0.5 * dy];
+}
+
+var c;
 function setup() {
   createCanvas(600,600);
   background(2*2*16+2);
   noStroke();
   ellipseMode(CENTER);
-  t = new Triangle(width/2,height/4,width/4,3*height/4,3*width/4,3*height/4);
+  t = new Triangle(width/2,3*height/4 - height/2 * Math.sin(PI/3),width/4,3*height/4,3*width/4,3*height/4);
   t.setStartingPoint(width/2,height/2);
-
+  c = document.getElementById("count");
 }
 
+
 function draw() {
-  // background(4*16+2);
   newRoll();
   t.update(r,0.45);
+  c.innerText = frameCount;
 }
 
 function newRoll(){

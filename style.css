@@ -13,7 +13,6 @@
 * {
   margin: 0;
   padding: 0;
-  overflow: hidden;
 }
 
 body {
@@ -36,7 +35,7 @@ canvas {
   animation-duration: 2s;
 }
 
-#watermark { position: absolute; left: 0%; bottom: 0%; width:80% ; text-align: left;margin-right: 20%;font-size: 10vw; opacity: 0.2; }
+#watermark { position: absolute; z-index: -1 ; left: 0%; bottom: 0%; width:80% ; text-align: left;margin-right: 20%;font-size: 10vw; opacity: 0.2; }
 
 a {
   text-decoration: none;
