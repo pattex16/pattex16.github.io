@@ -16,6 +16,7 @@
 }
 
 body {
+  background: yellow;
   margin-top:5%;
   font-family: "Roboto Slab";
   font-size:28pt;
@@ -25,46 +26,58 @@ body {
   animation-duration: 2s;
 }
 
-canvas {
-  margin:auto;
-  position:absolute;
-  left:0;
-  top:0;
-  z-index:-1;
-  animation: canvas normal forwards;
-  animation-duration: 2s;
+#list{
+  z-index: 2;
+  background: white;
+  float:right;
+  margin-right:10%;
+  border:150% solid white;
+  border-style: dotted;
+  padding:50px;
 }
 
-#watermark { position: absolute; z-index: -1 ; left: 0%; bottom: 0%; width:80% ; text-align: left;margin-right: 20%;font-size: 10vw; opacity: 0.2; }
+.sep{
+  font-size: 50%;
+  opacity: 50%;
+}
+
+#watermark { position: fixed; z-index:-1; left: 0%; bottom: 0%; width:80% ; text-align: left;margin-right: 20%;font-size: 10vw; opacity: 0.2; }
 
 a {
   text-decoration: none;
   animation-name: textColor;
   animation-duration: 2s;
 }
+
 a:link {
   color: grey;
   text-decoration: none;
   animation-name: textColor;
   animation-duration: 2s;
 }
-/* visited link */
+
 a:visited {
-  color: darkgrey;
+  color: grey;
   text-decoration: none;
   animation-name: textColor;
   animation-duration: 2s;
 }
-/* mouse over link */
+
 a:hover {
-  color: teal;
+  color: yellow;
   text-decoration: none;
   animation-name: textColor;
   animation-duration: 2s;
+  animation-name: mov;
 }
-/* selected link */
+
 a:active {
-  color: orange;
+  color: teal;
+}
+
+.categ{
+  color:yellow;
+  size:300%;
 }
 
 
@@ -74,27 +87,9 @@ a:active {
   100% { }
 }
 
-@keyframes textColor {
-  0% {color: black;}
-  40% {color: black;}
-  100% {}
+@keyframes mov{
+  0% {}
+  100%{translate: 10px;}
 }
 
-@keyframes canvas {
-  0% {opacity: 0;}
-  40% {opacity: 0;}
-  100% {opacity: 1;}
-}
 
-button{
-  width : 50px;
-  height : 50;
-  color : white;
-  font-weight: 900;
-  background-color: black;
-  opacity: 0.2;
-  border: none;
-
-  animation: curtain normal forwards;
-  animation-duration: 2s;
-}
